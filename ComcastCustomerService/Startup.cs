@@ -5,6 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http.Headers;
+using IdentityServer4.AccessTokenValidation;
+using IdentityServer4;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace ComcastCustomerService
 {
@@ -22,6 +25,24 @@ namespace ComcastCustomerService
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddMvcCore()
+    .AddAuthorization()
+    .AddJsonFormatters();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme =
+                                           JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme =
+                                           JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(o =>
+            {
+                o.Authority = "http://localhost:55517/";
+                o.Audience = "scope.readAccess";
+                o.RequireHttpsMetadata = false;
+            });
+
             MvcXmlMvcBuilderExtensions.AddXmlSerializerFormatters(MvcServiceCollectionExtensions.AddMvc(services, (Action<MvcOptions>)(options => options.FormatterMappings.SetMediaTypeMappingForFormat("js", MediaTypeHeaderValue.Parse("application/json").ToString()))));
             Environment.SetEnvironmentVariable("AWS_PROFILE_NAME", Configuration.GetValue<string>("AppSettings:ProfileName"));
             Environment.SetEnvironmentVariable("AWS_ACCESS_KEY_ID",Configuration.GetValue<string>("AppSettings:AccessKey"));
@@ -32,6 +53,10 @@ namespace ComcastCustomerService
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseStatusCodePages();
+            app.UseAuthentication();
+
+
             if (HostingEnvironmentExtensions.IsDevelopment(env))
                 DeveloperExceptionPageExtensions.UseDeveloperExceptionPage(app);
             MvcApplicationBuilderExtensions.UseMvc(app);

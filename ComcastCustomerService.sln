@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComcastCustomerService", "ComcastCustomerService\ComcastCustomerService.csproj", "{44356DC3-F999-485D-B403-8BA5122807D4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OauthAuthorizationServer", "OauthAuthorizationServer\OauthAuthorizationServer.csproj", "{A1BA8C72-114A-4689-9BC8-F87ED64766FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuthClient", "OAuthClient\OAuthClient.csproj", "{0CD9E8E4-E405-45A3-9D2C-BE12178DD5FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{44356DC3-F999-485D-B403-8BA5122807D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44356DC3-F999-485D-B403-8BA5122807D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44356DC3-F999-485D-B403-8BA5122807D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1BA8C72-114A-4689-9BC8-F87ED64766FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1BA8C72-114A-4689-9BC8-F87ED64766FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1BA8C72-114A-4689-9BC8-F87ED64766FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1BA8C72-114A-4689-9BC8-F87ED64766FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CD9E8E4-E405-45A3-9D2C-BE12178DD5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CD9E8E4-E405-45A3-9D2C-BE12178DD5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CD9E8E4-E405-45A3-9D2C-BE12178DD5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CD9E8E4-E405-45A3-9D2C-BE12178DD5FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

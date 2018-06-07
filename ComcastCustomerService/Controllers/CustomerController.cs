@@ -10,10 +10,12 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ComcastCustomer.Controllers
 {
     [Produces("application/json")]
+    [Authorize]
     public class CustomerController : Controller
     {
         #region "Constructor"
@@ -32,6 +34,11 @@ namespace ComcastCustomer.Controllers
         [Route("getall")]
         public IEnumerable<string> Get()
         {
+            //bool userHasRightScope = User.HasClaim("scope", "scope.readaccess");
+            //if (userHasRightScope == false)
+            //{
+            //    throw new Exception("Invalid scope");
+            //}
             //return GetAllItems(GetDynamoDbContext());
             return new string[] { "value1","value2"};
         }
